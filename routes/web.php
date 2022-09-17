@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard.index');
 });
+
+Route::prefix('/admin')->middleware('auth')->group(function(){
+    Route::get('/',function(){
+        return view('dashboard.index');
+    });
+});
+
+Route::view('login','auth.login')->name('login');
+Route::view('logout','auth.logout')->name('logout');
