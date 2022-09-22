@@ -26,7 +26,10 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="/admin/user/role"> <i class="bi bi-people-fill"></i> {{ __('Role') }}</a>
+                <a href="{{ url('/admin/user/role') }}"> <i class="bi bi-people-fill"></i> {{ __('Role') }}</a>
+            </li>
+            <li class="submenu-item ">
+                <a href="{{ url('/admin/user/list') }}"> <i class="bi bi-people-fill"></i> {{ __('User List') }}</a>
             </li>
         </ul>
     </li>

@@ -67,7 +67,9 @@
     <script src="/dist/assets/js/app.js"></script>
     <script>
         currenthref = document.querySelector('a[href="'+window.location.href+'"]')
-        // console.log(currenthref)
+        currenthref.parentNode.classList.add('active')
+        currenthref.parentNode.parentNode.classList.add('active')
+        currenthref.parentNode.parentNode.parentNode.classList.add('active')
         // console.log('a[href="'+window.location.href+'"]')
         // console.log(window.location.href)
     </script>
