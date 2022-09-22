@@ -15,8 +15,18 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                
-                <a href="component-alert.html"> <i class="bi bi-stack"></i> Alert</a>
+                <a href="#"> <i class="bi bi-stack"></i> Alert</a>
+            </li>
+        </ul>
+    </li>
+    <li class="sidebar-item  has-sub">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-person-workspace"></i>
+            <span>{{ __('User') }}</span>
+        </a>
+        <ul class="submenu ">
+            <li class="submenu-item ">
+                <a href="/admin/user/role"> <i class="bi bi-people-fill"></i> {{ __('Role') }}</a>
             </li>
         </ul>
     </li>

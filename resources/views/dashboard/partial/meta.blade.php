@@ -7,3 +7,5 @@
 
 <link rel="shortcut icon" href="/dist/assets/images/logo/favicon.svg" type="image/x-icon">
 <link rel="shortcut icon" href="/dist/assets/images/logo/favicon.png" type="image/png">
+@stack('styles')
+@livewireStyles
