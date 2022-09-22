@@ -65,6 +65,12 @@
     </div>
     <script src="/dist/assets/js/bootstrap.js"></script>
     <script src="/dist/assets/js/app.js"></script>
+    <script>
+        currenthref = document.querySelector('a[href="'+window.location.href+'"]')
+        // console.log(currenthref)
+        // console.log('a[href="'+window.location.href+'"]')
+        // console.log(window.location.href)
+    </script>
     @stack('scripts')
     @livewireScripts
 
