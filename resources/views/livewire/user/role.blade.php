@@ -3,21 +3,26 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-striped" id="table1">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>{{ __('NO') }}</th>
                                 <th>{{ __('NAME') }}</th>
                                 <th>{{ __('GUARD') }}</th>
+                                <th>{{ __('ACTION') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($data->isNotEmpty())
-                                @foreach ($data as $item)
+                            @if ($dataRole->isNotEmpty())
+                                @foreach ($dataRole as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->guard_name }}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info"><i class="bi bi-pencil"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif
