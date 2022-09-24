@@ -22,7 +22,15 @@
                                         <tr>
                                             <td>{{ $loop->index + $dataUser->firstItem() }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->roles->first()->name }}</td>
+                                            {{-- <td>{{ $item->roles->first()->name }}</td> --}}
+                                            <td>
+                                                @foreach ($item->roles as $itemroles)
+                                                    @if ($loop->index > 0)
+                                                        , 
+                                                    @endif
+                                                    {{ $itemroles->name }}
+                                                @endforeach
+                                            </td>
                                             <td>
                                                 <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#userEdit" wire:click="setEdit({{ $item->id }})"><i class="bi bi-pencil"></i></button>
                                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#userDelete" wire:click="setDelete({{ $item->id }})"><i class="bi bi-trash"></i></button>
