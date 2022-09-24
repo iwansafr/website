@@ -65,6 +65,8 @@
     </div>
     <script src="/dist/assets/js/bootstrap.js"></script>
     <script src="/dist/assets/js/app.js"></script>
+    {{-- <script src="/dist/assets/extensions/choices.js/public/assets/scripts/choices.js"></script>
+    <script src="/dist/assets/js/pages/form-element-select.js"></script> --}}
     <script>
         currenthref = document.querySelector('a[href="'+window.location.href+'"]')
         currenthref.parentNode.classList.add('active')
