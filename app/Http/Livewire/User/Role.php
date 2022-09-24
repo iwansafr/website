@@ -12,7 +12,6 @@ class Role extends Component
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['refreshRoleList'=>'$refresh'];
     public $name;
-    public $roleId = 0;
     public $search;
     public function updatingSearch()
     {

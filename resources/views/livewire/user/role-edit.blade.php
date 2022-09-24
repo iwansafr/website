@@ -8,19 +8,19 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal" wire:click="clear">
-                <i class="bx bx-x d-block d-sm-none"></i>
-                <span class="d-none d-sm-block">Close</span>
+                <i class="bi bi-x"></i>
+                <span>Close</span>
             </button>
             <div wire:loading wire:target="save">
                 <button class="btn btn-primary ml-1 disabled">
-                    <i class="bx bx-check d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">{{ __('Sedang Mengirim Data') }} ...</span>
+                    <i class="bi bi-check"></i>
+                    <span>{{ __('Sedang Mengirim Data') }} ...</span>
                 </button>    
             </div>
             <div wire:loading.remove wire:target="save">
                 <button type="submit" class="btn btn-primary ml-1">
-                    <i class="bx bx-check d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Accept</span>
+                    <i class="bi bi-check"></i>
+                    <span>Accept</span>
                 </button>
             </div>
         </div>

@@ -10,12 +10,9 @@ class RoleEdit extends Component
     protected $listeners = ['initSetEditRole'];
     public $name;
     public $roleId;
+    
     public function render()
     {
-        if ($this->roleId > 0) {
-            $role = Role::find($this->roleId);
-            $this->name = $role->name;
-        }
         return view('livewire.user.role-edit');
     }
     public function save()
@@ -36,7 +33,9 @@ class RoleEdit extends Component
             if($role->save()){
                 session()->flash('alert','success');
                 session()->flash('msg',__('Role Berhasil disimpan'));
-                $this->reset();
+                if (empty($this->roleId)) {
+                    $this->reset();
+                }
                 $this->emit('refreshRoleList');
             }
         } catch (\Throwable $th) {
@@ -52,5 +51,9 @@ class RoleEdit extends Component
     public function initSetEditRole($data)
     {
         $this->roleId = $data['roleId'];
+        if ($this->roleId > 0) {
+            $role = Role::find($this->roleId);
+            $this->name = $role->name;
+        }
     }
 }

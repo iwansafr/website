@@ -10,20 +10,20 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal" wire:click="clear">
-                <i class="bx bx-x d-block d-sm-none"></i>
-                <span class="d-none d-sm-block">Close</span>
+                <i class="bi bi-x"></i>
+                <span>Close</span>
             </button>
             <div wire:loading wire:target="delete">
                 <button class="btn btn-danger ml-1 disabled">
-                    <i class="bx bx-check d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">{{ __('Sedang Mengirim Data') }} ...</span>
+                    <i class="bi bi-check"></i>
+                    <span>{{ __('Sedang Mengirim Data') }} ...</span>
                 </button>    
             </div>
             @if (!empty($name))
                 <div wire:loading.remove wire:target="delete">
                     <button type="submit" class="btn btn-danger ml-1">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">{{ __('Delete') }}</span>
+                        <i class="bi bi-trash"></i>
+                        <span>{{ __('Delete') }}</span>
                     </button>
                 </div>
             @endif
