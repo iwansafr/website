@@ -4,7 +4,9 @@
             @if (session()->has('msg'))
                 <div class="alert alert-success"><i class="bi bi-file-excel"></i> {{ session('msg') }}</div>
             @endif
-            <x-multiselect name="roles" label="Role" :options="$roleOptions"></x-multiselect>
+            <div wire:ignore>
+                <x-multiselect name="roles" label="Role" :options="$roleOptions"></x-multiselect>
+            </div>
             <x-input name="name" label="Name"></x-input>
             <x-input name="email" label="Email" type="email"></x-input>
             <x-input name="password" label="Password" type="password"></x-input>
@@ -18,15 +20,25 @@
                 <button class="btn btn-primary ml-1 disabled">
                     <i class="bi bi-check"></i>
                     <span>{{ __('Sedang Mengirim Data') }} ...</span>
-                </button>    
+                </button>
             </div>
             <div wire:loading.remove wire:target="save">
-                <button type="submit" class="btn btn-primary ml-1">
+                <button type="submit" id="buttonSave" class="btn btn-primary ml-1">
                     <i class="bi bi-check"></i>
                     <span>{{ __('Save') }}</span>
                 </button>
             </div>
         </div>
     </form>
-    
+
 </div>
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#roles').select2();
+            $(document).on('click','#buttonSave',function(){
+                console.log('clicked')
+            })
+        });
+    </script>
+@endpush

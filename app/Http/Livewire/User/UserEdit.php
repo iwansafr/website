@@ -25,7 +25,12 @@ class UserEdit extends Component
     }
     public function render()
     {
+        $this->upadateRole();
         return view('livewire.user.user-edit');
+    }
+    public function upadateRole()
+    {
+        $this->dispatchBrowserEvent('updateRole');
     }
     public function save()
     {
@@ -45,7 +50,7 @@ class UserEdit extends Component
     
             $user->name  = $this->name;
             $user->email  = $this->email;
-            $user->password  = $this->password;
+            $user->password  = bcrypt($this->password);
             if($user->save()){
                 $user->assignRole($this->roles);
                 session()->flash('alert','success');
@@ -69,8 +74,14 @@ class UserEdit extends Component
     {
         $this->userId = $data['userId'];
         if ($this->userId > 0) {
-            $role = User::find($this->userId);
-            $this->name = $role->name;
+            $user = User::find($this->userId);
+            $this->name = $user->name;
+            $this->email = $user->email;
+            $this->password = $user->password;
+            foreach ($user->roles as $item) {
+                $this->roles[$item->name] = $item->name;
+            }
+            // $this->roles = $user->roles->first()->name;
         }
     }
 }
