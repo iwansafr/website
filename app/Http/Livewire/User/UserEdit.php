@@ -12,19 +12,29 @@ class UserEdit extends Component
     public $name;
     public $email;
     public $password;
-    public $roles = [];
+    public $roles;
     public $roleOptions;
+    public $roleList;
     public $userId;
+    public $searchRole;
     
     public function mount()
     {
-        $roleOptions = Role::all();
-        foreach ($roleOptions as $item) {
-            $this->roleOptions[$item->name] = $item->name;
+        $this->roleOptions = Role::all();
+    }
+    public function setRoles($value)
+    {
+        if($this->roleOptions->where('name',$value)){
+            $this->roles[$value] = $value;
         }
     }
     public function render()
     {
+        if (!empty($this->searchRole)) {
+            $this->roleList = Role::where('name','like','%'.$this->searchRole.'%')->limit(4)->get();
+        }else{
+            $this->roleList = Role::all();
+        }
         $this->upadateRole();
         return view('livewire.user.user-edit');
     }
@@ -57,6 +67,7 @@ class UserEdit extends Component
                 session()->flash('msg',__('User Berhasil disimpan'));
                 if (empty($this->userId)) {
                     $this->resetExcept('roleOptions');
+                    $this->roles = [];
                 }
                 $this->emit('refreshUserList');
             }
