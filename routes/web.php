@@ -23,6 +23,9 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     })->name('admin');
     Route::view('/user/role','dashboard.user.role');
     Route::view('/user/list','dashboard.user.list');
+    
+    Route::view('/menu/position','dashboard.menu.position');
+
 });
 
 Route::view('login','auth.login')->name('login');
