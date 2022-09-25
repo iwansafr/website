@@ -17,6 +17,9 @@
             <li class="submenu-item ">
                 <a href="{{ url('admin/menu/position') }}"> <i class="bi bi-stack"></i> {{ __('Menu Position') }}</a>
             </li>
+            <li class="submenu-item ">
+                <a href="{{ url('admin/menu/list') }}"> <i class="bi bi-stack"></i> {{ __('Menu') }}</a>
+            </li>
         </ul>
     </li>
     <li class="sidebar-item  has-sub">
