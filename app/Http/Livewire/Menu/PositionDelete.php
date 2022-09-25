@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Menu;
 
-use App\Models\Menu;
+use App\Models\MenuPosition;
 use Livewire\Component;
 
 class PositionDelete extends Component
@@ -13,7 +13,7 @@ class PositionDelete extends Component
     public function render()
     {
         if (!empty($this->menuId)) {
-            $menu = Menu::find($this->menuId);
+            $menu = MenuPosition::find($this->menuId);
             $this->title = $menu->title;
         }
         return view('livewire.menu.position-delete');
@@ -24,9 +24,9 @@ class PositionDelete extends Component
     }
     public function delete()
     {
-        Menu::find($this->menuId)->delete();
+        MenuPosition::find($this->menuId)->delete();
         session()->flash('alert','success');
-        session()->flash('msg',__('Menu Berhasil dihapus'));
+        session()->flash('msg',__('Menu Position Berhasil dihapus'));
         $this->reset();
         $this->emit('refreshDataList');
     }

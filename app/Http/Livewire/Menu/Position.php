@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Menu;
 
-use App\Models\Menu;
+use App\Models\MenuPosition;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,8 +19,8 @@ class Position extends Component
     }
     public function render()
     {
-        $dataMenu = Menu::where('title','like','%'.$this->search.'%')->paginate(12);
-        return view('livewire.menu.position',compact('dataMenu'));
+        $dataPosition = MenuPosition::where('title','like','%'.$this->search.'%')->paginate(12);
+        return view('livewire.menu.position',compact('dataPosition'));
     }
     public function setEdit($id)
     {

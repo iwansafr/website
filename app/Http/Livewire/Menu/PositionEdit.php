@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Menu;
 
-use App\Models\Menu;
+use App\Models\MenuPosition;
 use Livewire\Component;
 
 class PositionEdit extends Component
@@ -22,15 +22,15 @@ class PositionEdit extends Component
 
         try {
             if($this->menuId > 0){
-                $menu = Menu::find($this->menuId);
+                $menu = MenuPosition::find($this->menuId);
             }else{
-                $menu = new Menu();
+                $menu = new MenuPosition();
             }
     
             $menu->title  = $this->title;
             if($menu->save()){
                 session()->flash('alert','success');
-                session()->flash('msg',__('Menu Berhasil disimpan'));
+                session()->flash('msg',__('Menu Position Berhasil disimpan'));
                 if (empty($this->menuId)) {
                     $this->reset();
                 }
@@ -50,7 +50,7 @@ class PositionEdit extends Component
     {
         $this->menuId = $data['menuId'];
         if ($this->menuId > 0) {
-            $menu = Menu::find($this->menuId);
+            $menu = MenuPosition::find($this->menuId);
             $this->title = $menu->title;
         }
     }
