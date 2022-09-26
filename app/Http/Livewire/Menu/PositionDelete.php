@@ -8,23 +8,23 @@ use Livewire\Component;
 class PositionDelete extends Component
 {
     protected $listeners = ['initSetDeleteData'];
-    public $menuId;
+    public $positionId;
     public $title;
     public function render()
     {
-        if (!empty($this->menuId)) {
-            $menu = MenuPosition::find($this->menuId);
+        if (!empty($this->positionId)) {
+            $menu = MenuPosition::find($this->positionId);
             $this->title = $menu->title;
         }
         return view('livewire.menu.position-delete');
     }
     public function initSetDeleteData($data)
     {
-        $this->menuId = $data['menuId'];
+        $this->positionId = $data['positionId'];
     }
     public function delete()
     {
-        MenuPosition::find($this->menuId)->delete();
+        MenuPosition::find($this->positionId)->delete();
         session()->flash('alert','success');
         session()->flash('msg',__('Menu Position Berhasil dihapus'));
         $this->reset();

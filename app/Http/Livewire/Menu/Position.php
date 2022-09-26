@@ -24,10 +24,10 @@ class Position extends Component
     }
     public function setEdit($id)
     {
-        $this->emit('initSetEditData',['menuId'=>$id]);
+        $this->emit('initSetEditData',['positionId'=>$id]);
     }
     public function setDelete($id)
     {
-        $this->emit('initSetDeleteData', ['menuId'=>$id]);
+        $this->emit('initSetDeleteData', ['positionId'=>$id]);
     }
 }

@@ -6,9 +6,10 @@ use App\Models\MenuPosition;
 use Livewire\Component;
 
 class PositionEdit extends Component
-{protected $listeners = ['initSetEditData'];
+{
+    protected $listeners = ['initSetEditData'];
     public $title;
-    public $menuId;
+    public $positionId;
     
     public function render()
     {
@@ -17,12 +18,12 @@ class PositionEdit extends Component
     public function save()
     {
         $this->validate([
-            'title' => 'required|unique:menus,title,'.$this->menuId
+            'title' => 'required|unique:menu_positions,title,'.$this->positionId
         ]);
 
         try {
-            if($this->menuId > 0){
-                $menu = MenuPosition::find($this->menuId);
+            if($this->positionId > 0){
+                $menu = MenuPosition::find($this->positionId);
             }else{
                 $menu = new MenuPosition();
             }
@@ -31,7 +32,7 @@ class PositionEdit extends Component
             if($menu->save()){
                 session()->flash('alert','success');
                 session()->flash('msg',__('Menu Position Berhasil disimpan'));
-                if (empty($this->menuId)) {
+                if (empty($this->positionId)) {
                     $this->reset();
                 }
                 $this->emit('refreshDataList');
@@ -44,13 +45,13 @@ class PositionEdit extends Component
     public function clear()
     {
         $this->reset();
-        $this->menuId  = 0;
+        $this->positionId  = 0;
     }
     public function initSetEditData($data)
     {
-        $this->menuId = $data['menuId'];
-        if ($this->menuId > 0) {
-            $menu = MenuPosition::find($this->menuId);
+        $this->positionId = $data['positionId'];
+        if ($this->positionId > 0) {
+            $menu = MenuPosition::find($this->positionId);
             $this->title = $menu->title;
         }
     }

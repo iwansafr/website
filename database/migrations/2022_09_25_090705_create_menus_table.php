@@ -25,6 +25,7 @@ return new class extends Migration
                 ->on('menus')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->integer('order')->nullable()->default(0);
             $table->string('title');
             $table->string('link');
             $table->tinyInteger('publish')->default(1);
