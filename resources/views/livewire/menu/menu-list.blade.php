@@ -12,6 +12,7 @@
                                 <tr>
                                     <th>{{ __('NO') }}</th>
                                     <th>{{ __('TITLE') }}</th>
+                                    <th>{{ __('ORDER') }}</th>
                                     <th>{{ __('ACTION') }}</th>
                                 </tr>
                             </thead>
@@ -21,6 +22,7 @@
                                         <tr>
                                             <td>{{ $loop->index + $dataMenu->firstItem() }}</td>
                                             <td>{{ $item->title }}</td>
+                                            <td>{{ $item->order }}</td>
                                             <td>
                                                 <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editModal" wire:click="setEdit({{ $item->id }})"><i class="bi bi-pencil"></i></button>
                                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" wire:click="setDelete({{ $item->id }})"><i class="bi bi-trash"></i></button>

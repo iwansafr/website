@@ -74,6 +74,10 @@ class MenuEdit extends Component
         if ($this->menuId > 0) {
             $menu = Menu::find($this->menuId);
             $this->title = $menu->title;
+            $this->menu_position_id = $menu->menu_position_id;
+            $this->parent           = $menu->parent;
+            $this->link             = $menu->link;
+            $this->order            = $menu->order;
         }
     }
     public function render()

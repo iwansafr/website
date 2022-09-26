@@ -19,7 +19,7 @@ class MenuList extends Component
     }
     public function render()
     {
-        $dataMenu = Menu::where('title','like','%'.$this->search.'%')->paginate(12);
+        $dataMenu = Menu::where('title','like','%'.$this->search.'%')->orderBy('order','asc')->paginate(12);
         return view('livewire.menu.menu-list',compact('dataMenu'));
     }
     public function setEdit($id)
