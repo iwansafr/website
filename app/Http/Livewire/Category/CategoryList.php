@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Menu;
+namespace App\Http\Livewire\Category;
 
-use App\Models\Menu;
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class MenuList extends Component
+class CategoryList extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -19,8 +19,8 @@ class MenuList extends Component
     }
     public function render()
     {
-        $dataMenu = Menu::with('menu_position')->where('title','like','%'.$this->search.'%')->orderBy('order','asc')->paginate(12);
-        return view('livewire.menu.menu-list',compact('dataMenu'));
+        $dataCategory = Category::where('title','like','%'.$this->search.'%')->paginate(12);
+        return view('livewire.category.category-list',compact('dataCategory'));
     }
     public function setEdit($id)
     {

@@ -5,26 +5,24 @@
                 <div class="card-body">
                     <div class="table table-responive">
                         <div class="container-fluid">
-                            <x-input name="search" label="Menu Title"></x-input>
+                            <x-input name="search" label="Category Title"></x-input>
                         </div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>{{ __('NO') }}</th>
                                     <th>{{ __('TITLE') }}</th>
-                                    <th>{{ __('POSITION') }}</th>
-                                    <th>{{ __('ORDER') }}</th>
+                                    <th>{{ __('PARENT') }}</th>
                                     <th>{{ __('ACTION') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($dataMenu->isNotEmpty())
-                                    @foreach ($dataMenu as $item)
+                                @if ($dataCategory->isNotEmpty())
+                                    @foreach ($dataCategory as $item)
                                         <tr>
-                                            <td>{{ $loop->index + $dataMenu->firstItem() }}</td>
+                                            <td>{{ $loop->index + $dataCategory->firstItem() }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>{{ $item->menu_position->title }}</td>
-                                            <td>{{ $item->order }}</td>
+                                            <td>{{ $item->parent->title ?? 'None' }}</td>
                                             <td>
                                                 <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editModal" wire:click="setEdit({{ $item->id }})"><i class="bi bi-pencil"></i></button>
                                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" wire:click="setDelete({{ $item->id }})"><i class="bi bi-trash"></i></button>
@@ -34,7 +32,7 @@
                                 @endif
                             </tbody>
                         </table>
-                        {{ $dataMenu->links() }}
+                        {{ $dataCategory->links() }}
                     </div>
                 </div>
             </div>

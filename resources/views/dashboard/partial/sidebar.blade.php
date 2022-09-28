@@ -7,6 +7,20 @@
             <span>{{ __('Dashboard') }}</span>
         </a>
     </li>
+    <li class="sidebar-item  has-sub">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-stack"></i>
+            <span>{{ __('Content') }}</span>
+        </a>
+        <ul class="submenu ">
+            <li class="submenu-item ">
+                <a href="{{ url('admin/category') }}"> <i class="bi bi-stack"></i> {{ __('Category') }}</a>
+            </li>
+            <li class="submenu-item ">
+                <a href="{{ url('admin/content/list') }}"> <i class="bi bi-stack"></i> {{ __('Content') }}</a>
+            </li>
+        </ul>
+    </li>
 
     <li class="sidebar-item  has-sub">
         <a href="#" class='sidebar-link'>

@@ -24,7 +24,7 @@ class MenuEdit extends Component
         foreach ($menuPosition as $item) {
             $this->menuPositionOptions[$item->id] = $item->title;
         }
-        $menuParent = Menu::where('parent',null);
+        $menuParent = Menu::where('parent',null)->get();
         foreach ($menuParent as $item) {
             $this->menuParent[$item->id] = $item->title;
         }
