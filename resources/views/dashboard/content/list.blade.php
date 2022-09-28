@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="col-md-12">
-        <a type="button" class="btn btn-sm btn-primary block">
+        <a href="{{ url('admin/content/edit') }}" class="btn btn-sm btn-primary block">
             <i class="bi bi-plus"></i>{{ __('Add Content') }}
         </a>
         <div class="modal fade text-left" id="deleteModal" tabindex="-1" role="dialog" data-bs-backdrop="false" aria-labelledby="myModalLabel1"

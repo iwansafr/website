@@ -1,36 +1,6 @@
 <div>
     @push('styles')
-        <style>
-            .my-custom-scrollbar {
-                position: relative;
-                height: 200px;
-                overflow: auto;
-            }
-
-            .table-wrapper-scroll-y {
-                display: block;
-            }
-
-            /* width */
-            ::-webkit-scrollbar {
-                width: 5px;
-            }
-
-            /* Track */
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1;
-            }
-
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-                background: #888;
-            }
-
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
-        </style>
+        <link rel="stylesheet" href="/dist/assets/css/widgets/scrollbar.css">
     @endpush
     <form wire:submit.prevent="save">
         <div class="modal-body">
@@ -89,5 +59,4 @@
             </div>
         </div>
     </form>
-
 </div>
