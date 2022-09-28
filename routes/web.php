@@ -28,6 +28,8 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::view('/menu/list','dashboard.menu.list');
 
     Route::view('/category','dashboard.category.list');
+    Route::view('/content/list','dashboard.content.list');
+    Route::view('/content/edit','dashboard.content.edit');
 
 });
 
