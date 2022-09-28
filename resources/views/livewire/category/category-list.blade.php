@@ -22,7 +22,9 @@
                                         <tr>
                                             <td>{{ $loop->index + $dataCategory->firstItem() }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>{{ $item->parent->title ?? 'None' }}</td>
+                                            <td>
+                                                {{ $item->parentCategory->title ?? 'None' }}
+                                            </td>
                                             <td>
                                                 <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editModal" wire:click="setEdit({{ $item->id }})"><i class="bi bi-pencil"></i></button>
                                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" wire:click="setDelete({{ $item->id }})"><i class="bi bi-trash"></i></button>

@@ -16,9 +16,14 @@ class CategoryEdit extends Component
     public $order;
     public $slug;
     
-    public function mount()
+    public function getParent()
     {
-        $categoryParent = Category::where('parent',null)->get();
+        $this->categoryParent = [];
+        if ($this->categoryId > 0) {
+            $categoryParent = Category::where('parent',null)->whereNot('id',$this->categoryId)->get();
+        }else{
+            $categoryParent = Category::where('parent',null)->get();
+        }
         foreach ($categoryParent as $item) {
             $this->categoryParent[$item->id] = $item->title;
         }
@@ -61,7 +66,7 @@ class CategoryEdit extends Component
     }
     public function initSetEditData($data)
     {
-        $this->categoryId = $data['categoryId'];
+        $this->categoryId = $data['dataId'];
         if ($this->categoryId > 0) {
             $category     = Category::find($this->categoryId);
             $this->title  = $category->title;
@@ -71,6 +76,7 @@ class CategoryEdit extends Component
     }
     public function render()
     {
+        $this->getParent();
         $this->setSlug();
         return view('livewire.category.category-edit');
     }
@@ -78,7 +84,11 @@ class CategoryEdit extends Component
     {
         $title = $this->title;
         $slug = strtolower(str_replace(' ','-',$title));
-        $slugCount = Category::where('slug', $slug)->count('id');
+        if (empty($this->categoryId)) {
+            $slugCount = Category::where('slug', $slug)->count('id');
+        }else{
+            $slugCount = Category::where('slug', $slug)->whereNot('id', $this->categoryId)->count('id');
+        }
         $numberSlug = '';
         if($slugCount > 0){
             $slugCount++;
