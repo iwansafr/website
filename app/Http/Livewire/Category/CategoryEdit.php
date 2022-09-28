@@ -32,7 +32,7 @@ class CategoryEdit extends Component
     public function save()
     {
         $this->validate([
-            'title' => 'required|unique:menus,title,'.$this->categoryId,
+            'title' => 'required|unique:categories,title,'.$this->categoryId,
             'slug' => 'required',
         ]);
 
