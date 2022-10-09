@@ -10,6 +10,10 @@
                 @endif
 
                 <x-input name="title" label="Title"></x-input>
+                <div class="mb-3">
+                    <label for="">Slug</label>
+                    <input type="text" readonly class="form-control" wire:model="slug" id="slug">
+                </div>
                 <x-input name="searchCategory" label="Category"></x-input>
                 <div class="mb-3">
                     @if ($categoryList->isNotEmpty())
