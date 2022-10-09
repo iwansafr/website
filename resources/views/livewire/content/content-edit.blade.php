@@ -11,34 +11,38 @@
 
                 <x-input name="title" label="Title"></x-input>
                 <x-input name="searchCategory" label="Category"></x-input>
-                @if ($categoryList->isNotEmpty())
-                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                        <table class="table">
-                            @foreach ($categoryList as $item)
-                                <tr>
-                                    <td>
-                                        {{ !empty($item->parentCategory->title) ? $item->parentCategory->title.' -> ' : '' }}
-                                        {{ $item->title }}
-                                    </td>
-                                    <td class="float-end">
-                                        <span
-                                            wire:click="setCategories('{{ $item->id }}')"class="btn btn-sm btn-primary">{{ __('Pilih') }}</span>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                @endif
-                @if (!empty($categories))
-                    @foreach ($categories as $key => $value)
-                        <span class="btn btn-sm btn-info">{{ $value }}</span>
-                    @endforeach
-                @endif
+                <div class="mb-3">
+                    @if ($categoryList->isNotEmpty())
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table class="table">
+                                @foreach ($categoryList as $item)
+                                    <tr>
+                                        <td>
+                                            {{ !empty($item->parentCategory->title) ? $item->parentCategory->title.' -> ' : '' }}
+                                            {{ $item->title }}
+                                        </td>
+                                        <td class="float-end">
+                                            <span wire:click="setCategories('{{ $item->id }}')"class="btn btn-sm btn-primary">{{ __('Pilih') }}</span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    @endif
+                    @if (!empty($categories))
+                        @foreach ($categories as $key => $value)
+                            <span class="btn btn-sm btn-info" wire:click="removeCategories({{ $key }})">{{ $value }} <i class="bi bi-trash"></i></span>
+                        @endforeach
+                    @endif
+                </div>
+                
+                <hr>
                 <div wire:ignore>
-                    <div id="full" wire:model="content">
+                    <div id="content_summernote" wire:model="content">
 
                     </div>
                 </div>
+                {{ $content }}
             </div>
             <div class="card-footer">
                 <div wire:loading wire:target="save">
@@ -57,3 +61,22 @@
         </div>
     </form>
 </div>
+@push('scripts')
+    <script src="/dist/assets/extensions/jquery/jquery.min.js"></script>
+    <script src="/dist/assets/extensions/summernote/summernote-lite.min.js"></script>
+    <script src="/dist/assets/js/pages/summernote.js"></script>
+@endpush
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('#content_summernote').summernote({
+                callbacks:{
+                    onChange:function(contents, $editable){
+                        // console.log('onChange:' ,contents, $editable)
+                        @this.set('content',contents)
+                    }
+                }
+            })
+        })
+    </script>
+@endpush
