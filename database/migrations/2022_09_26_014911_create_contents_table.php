@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->text('content');
             $table->tinyInteger('publish')->default(1);
             $table->timestamps();

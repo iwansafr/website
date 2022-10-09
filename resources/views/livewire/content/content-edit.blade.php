@@ -5,8 +5,8 @@
                 {{ __('Content Form') }}
             </div>
             <div class="card-body">
-                @if (session()->has('msg'))
-                    <div class="alert alert-success"><i class="bi bi-file-excel"></i> {{ session('msg') }}</div>
+                @if (session()->has('message'))
+                    <div class="alert alert-{{ session('alert') }}"><i class="bi bi-file-excel"></i> {{ session('message') }}</div>
                 @endif
 
                 <x-input name="title" label="Title"></x-input>

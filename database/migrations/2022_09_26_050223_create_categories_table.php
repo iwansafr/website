@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('parent')->nullable();
             $table->foreign('parent')
                 ->references('id')
-                ->on('menus')
+                ->on('categories')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('title');

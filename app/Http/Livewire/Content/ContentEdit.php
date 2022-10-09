@@ -13,6 +13,7 @@ class ContentEdit extends Component
     public $content;
     public $categoryList;
     public $categories;
+    public $publish = 1;
     protected $rules = [
         'title' => 'required'
     ];
@@ -40,6 +41,23 @@ class ContentEdit extends Component
         $this->validate([
             'title' => 'required'
         ]);
+        $content = new Content();
+        $content->title = $this->title;
+        $content->slug = $this->slug;
+        $content->content = $this->content;
+        $content->publish = $this->publish;
+        if($content->save()){
+            session()->flash('message','content berhasil disimpan');
+            session()->flash('alert','success');
+        }
+        if(!empty($this->categories))
+        {
+            $categories = [];
+            foreach ($this->categories as $key => $value) {
+                $categories[] = $key;
+            }
+            $content->categories()->sync($categories);
+        }
     }
     public function setSlug()
     {
