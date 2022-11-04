@@ -63,10 +63,10 @@ class ContentEdit extends Component
         $content->slug = $this->slug;
         $content->content = $this->content;
         $content->publish = $this->publish;
-        if($content->save()){
+        // if($content->save()){
             session()->flash('message','content berhasil disimpan');
             session()->flash('alert','success');
-        }
+        // }
         if(!empty($this->categories))
         {
             $categories = [];

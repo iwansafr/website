@@ -5,14 +5,16 @@
                 {{ __('Content Form') }}
             </div>
             <div class="card-body">
-                @if (session()->has('message'))
-                    <div class="alert alert-{{ session('alert') }}"><i class="bi bi-file-excel"></i> {{ session('message') }}</div>
-                @endif
+                <div class="@if(!session()->has('alert')) d-none @endif alert alert-{{ session('alert') ?? '' }}"></i> {{ session('message') ?? '' }}</div>
                 <div class="row">
                     <div class="col-md-8">
-                        <x-input name="title" label="Title"></x-input>
-                        <div wire:ignore>
-                            <div id="content_summernote" wire:model="content"></div>
+                        <div class="form-group">
+                            <x-input name="title" label="Title"></x-input>
+                        </div>
+                        <div class="form-group">
+                            <div wire:ignore>
+                                <div id="content_summernote" wire:model="content"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
