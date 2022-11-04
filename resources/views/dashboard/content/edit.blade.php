@@ -7,5 +7,5 @@
     <link rel="stylesheet" href="/dist/assets/extensions/summernote/summernote-lite.css">
 @endpush
 @section('content')
-    @livewire('content.content-edit',['content_id'=>@intval($content_id)])
+    @livewire('content.content-edit',['contentId'=>@intval($content_id)])
 @endsection

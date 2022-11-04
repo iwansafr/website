@@ -1,6 +1,10 @@
 <div>
     <form wire:submit.prevent="save">
-        <div class="card">
+        <a href="{{ url('admin/content/list') }}" class="btn btn-sm btn-primary" style="position:absolute;z-index:999;">
+            <i class="bi bi-arrow-left"></i>
+            <span>{{ __('Kembali') }}</span>
+        </a>
+        <div class="card pt-3">
             <div class="card-header">
                 {{ __('Content Form') }}
             </div>
@@ -13,7 +17,7 @@
                         </div>
                         <div class="form-group">
                             <div wire:ignore>
-                                <div id="content_summernote" wire:model="content"></div>
+                                <div id="content_summernote" wire:model="content">{{ $content }}</div>
                             </div>
                         </div>
                     </div>

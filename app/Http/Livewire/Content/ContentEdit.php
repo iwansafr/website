@@ -16,7 +16,7 @@ class ContentEdit extends Component
     public $categories;
     public $allCategories;
     public $searchCategory;
-    public $content_id;
+    public $contentId;
     public $dataContent;
     public $publish = 1;
     protected $rules = [
@@ -25,11 +25,14 @@ class ContentEdit extends Component
 
     public function mount()
     {
-        $dataContent = Content::find($this->content_id);
+        $dataContent = Content::find($this->contentId);
         if(!empty($dataContent)){
             $this->title = $dataContent->title;
             $this->slug = $dataContent->slug;
             $this->content = $dataContent->content;
+            foreach ($dataContent->categories as $item) {
+                $this->categories[$item->id] = $item->title;
+            }
         }
         $this->allCategories = Category::with('parentCategory')->get(); 
         $this->categoryList = $this->allCategories;
@@ -66,23 +69,33 @@ class ContentEdit extends Component
         $this->validate([
             'title' => 'required'
         ]);
-        $content = new Content();
-        $content->title = $this->title;
-        $content->slug = $this->slug;
-        $content->content = $this->content;
-        $content->publish = $this->publish;
-        // if($content->save()){
-            session()->flash('message','content berhasil disimpan');
-            session()->flash('alert','success');
-        // }
-        if(!empty($this->categories))
-        {
-            $categories = [];
-            foreach ($this->categories as $key => $value) {
-                $categories[] = $key;
+        try {
+            if (!empty($this->contentId)) {
+                $content = Content::find($this->contentId);
+            }else{
+                $content = new Content();
             }
-            $content->categories()->sync($categories);
+            $content->title = $this->title;
+            $content->slug = $this->slug;
+            $content->content = $this->content;
+            $content->publish = $this->publish;
+            if($content->save()){
+                session()->flash('message','content berhasil disimpan');
+                session()->flash('alert','success');
+            }
+            if(!empty($this->categories))
+            {
+                $categories = [];
+                foreach ($this->categories as $key => $value) {
+                    $categories[] = $key;
+                }
+                $content->categories()->sync($categories);
+            }
+        } catch (\Throwable $th) {
+            session()->flash('message',$th);
+            session()->flash('alert','danger');
         }
+        
     }
     public function setSlug()
     {
