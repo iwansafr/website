@@ -16,6 +16,8 @@ class ContentEdit extends Component
     public $categories;
     public $allCategories;
     public $searchCategory;
+    public $content_id;
+    public $dataContent;
     public $publish = 1;
     protected $rules = [
         'title' => 'required'
@@ -23,6 +25,12 @@ class ContentEdit extends Component
 
     public function mount()
     {
+        $dataContent = Content::find($this->content_id);
+        if(!empty($dataContent)){
+            $this->title = $dataContent->title;
+            $this->slug = $dataContent->slug;
+            $this->content = $dataContent->content;
+        }
         $this->allCategories = Category::with('parentCategory')->get(); 
         $this->categoryList = $this->allCategories;
     }

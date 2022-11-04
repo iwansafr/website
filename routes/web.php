@@ -29,6 +29,9 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
 
     Route::view('/category','dashboard.category.list');
     Route::view('/content/list','dashboard.content.list');
+    Route::get('/content/edit/{id}',function($id){
+        return view('dashboard.content.edit',['content_id'=>$id]);
+    });
     Route::view('/content/edit','dashboard.content.edit');
 
 });

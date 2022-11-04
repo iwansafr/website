@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="col-md-12">
-        <button type="button" class="btn btn-sm btn-primary block" data-bs-toggle="modal" data-bs-target="#editModal">
+        <button type="button" class="btn btn-sm btn-primary block" style="position:absolute;z-index:9999;" data-bs-toggle="modal" data-bs-target="#editModal">
             <i class="bi bi-plus"></i>{{ __('Add Category') }}
         </button>
 
