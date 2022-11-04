@@ -5,14 +5,17 @@ namespace App\Http\Livewire\Content;
 use App\Models\Category;
 use App\Models\Content;
 use Livewire\Component;
+use stdClass;
 
 class ContentEdit extends Component
 {
     public $title;
     public $slug;
-    public $content;
+    public $content = '';
     public $categoryList;
     public $categories;
+    public $allCategories;
+    public $searchCategory;
     public $publish = 1;
     protected $rules = [
         'title' => 'required'
@@ -20,13 +23,27 @@ class ContentEdit extends Component
 
     public function mount()
     {
-        $this->categoryList = Category::with('parentCategory')->get();
+        $this->allCategories = Category::with('parentCategory')->get(); 
+        $this->categoryList = $this->allCategories;
     }
 
     public function render()
     {
         $this->setSlug();
+        $this->searchCategory();
         return view('livewire.content.content-edit');
+    }
+    public function searchCategory()
+    {
+        if(!empty($this->searchCategory)){
+            $categoryList = collect();
+            $categoryList = $this->categoryList->filter(function($value, $key){
+                return preg_match('~'.$this->searchCategory.'~',$value);
+            });
+            $this->categoryList = $categoryList;
+        }else{
+            $this->categoryList = $this->allCategories;
+        }
     }
     public function setCategories($id)
     {
