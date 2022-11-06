@@ -24,6 +24,21 @@
 
     <li class="sidebar-item  has-sub">
         <a href="#" class='sidebar-link'>
+            <i class="bi bi-bag"></i>
+            <span>{{ __('Product') }}</span>
+        </a>
+        <ul class="submenu ">
+            <li class="submenu-item ">
+                <a href="{{ url('admin/product/category') }}"> <i class="bi bi-bag-dash"></i> {{ __('Category') }}</a>
+            </li>
+            <li class="submenu-item ">
+                <a href="{{ url('admin/product/list') }}"> <i class="bi bi-basket"></i> {{ __('Product') }}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="sidebar-item  has-sub">
+        <a href="#" class='sidebar-link'>
             <i class="bi bi-columns"></i>
             <span>{{ __('Appearance') }}</span>
         </a>

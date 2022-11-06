@@ -32,7 +32,15 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::get('/content/edit/{id}',function($id){
         return view('dashboard.content.edit',['content_id'=>$id]);
     });
-    Route::view('/content/edit','dashboard.content.edit');
+    Route::view('/product/edit','dashboard.product.edit');
+
+    Route::view('/product/category','dashboard.product.category');
+    Route::view('/product/list','dashboard.product.list');
+    Route::get('/product/edit/{id}',function($id){
+        return view('dashboard.product.edit',['content_id'=>$id]);
+    });
+    Route::view('/product/edit','dashboard.content.edit');
+
     Route::view('/block/position','dashboard.block.position');
 
 });
