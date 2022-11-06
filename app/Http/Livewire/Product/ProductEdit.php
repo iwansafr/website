@@ -17,7 +17,7 @@ class ProductEdit extends Component
     public $categories;
     public $allCategories;
     public $searchCategory;
-    public $contentId;
+    public $productId;
     public $dataContent;
     public $publish = 1;
     protected $rules = [
@@ -26,9 +26,10 @@ class ProductEdit extends Component
 
     public function mount()
     {
-        $dataContent = Product::find($this->contentId);
+        $dataContent = Product::find($this->productId);
         if(!empty($dataContent)){
             $this->title = $dataContent->title;
+            $this->price = $dataContent->price;
             $this->slug = $dataContent->slug;
             $this->description = $dataContent->description;
             foreach ($dataContent->categories as $item) {
@@ -73,8 +74,8 @@ class ProductEdit extends Component
         ]);
         try {
             DB::transaction(function(){
-                if (!empty($this->contentId)) {
-                    $product = Product::find($this->contentId);
+                if (!empty($this->productId)) {
+                    $product = Product::find($this->productId);
                 }else{
                     $product = new Product();
                 }
@@ -106,10 +107,10 @@ class ProductEdit extends Component
     {
         $title = $this->title;
         $slug = strtolower(str_replace(' ','-',$title));
-        if (empty($this->contentId)) {
+        if (empty($this->productId)) {
             $slugCount = Product::where('slug', $slug)->count('id');
         }else{
-            $slugCount = Product::where('slug', $slug)->whereNot('id', $this->contentId)->count('id');
+            $slugCount = Product::where('slug', $slug)->whereNot('id', $this->productId)->count('id');
         }
         $numberSlug = '';
         if($slugCount > 0){

@@ -1,6 +1,6 @@
 <div>
     <form wire:submit.prevent="save">
-        <a href="{{ url('admin/content/list') }}" class="btn btn-sm btn-primary" style="position:absolute;z-index:999;">
+        <a href="{{ url('admin/product/list') }}" class="btn btn-sm btn-primary" style="position:absolute;z-index:999;">
             <i class="bi bi-arrow-left"></i>
             <span>{{ __('Kembali') }}</span>
         </a>
@@ -19,8 +19,9 @@
                             <x-input name="price" type="number" label="Price"></x-input>
                         </div>
                         <div class="form-group">
+                            <label for="">{{ __('Description') }}</label>
                             <div wire:ignore>
-                                <div id="content_summernote" wire:model="description">{{ $description }}</div>
+                                <div id="content_summernote" wire:model="description">{!! $description !!}</div>
                             </div>
                         </div>
                     </div>

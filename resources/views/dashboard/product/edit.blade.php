@@ -10,5 +10,5 @@
     <link rel="stylesheet" href="/dist/assets/extensions/summernote/summernote-lite.css">
 @endpush
 @section('content')
-    @livewire('product.product-edit',['productId'=>@intval($content_id)])
+    @livewire('product.product-edit',['productId'=>@intval($product_id)])
 @endsection

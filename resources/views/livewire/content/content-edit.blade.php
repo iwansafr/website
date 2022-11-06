@@ -16,8 +16,9 @@
                             <x-input name="title" label="Title"></x-input>
                         </div>
                         <div class="form-group">
+                            <label for="content">{{ __('content') }}</label>
                             <div wire:ignore>
-                                <div id="content_summernote" wire:model="content">{{ $content }}</div>
+                                <div id="content_summernote" wire:model="content">{!! $content !!}</div>
                             </div>
                         </div>
                     </div>
