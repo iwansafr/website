@@ -13,10 +13,11 @@ class MenuTop extends Component
     public function mount()
     {
         $config = Config::getConfig('menu_top');
+        $position_id = 0;
         if(!empty($config->data['menu_top'])){
             $position_id = $config->data['menu_top'];
-            $this->menu_top = Menu::where('menu_position_id', $position_id)->orderby('order','asc')->get();
         }
+        $this->menu_top = Menu::where('menu_position_id', $position_id)->orderby('order','asc')->get();
     }
 
     public function render()

@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\OptionTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Config extends Model
 {
-    use HasFactory;
+    use HasFactory, OptionTrait;
     protected $casts = [
         'data' => 'array'
     ];

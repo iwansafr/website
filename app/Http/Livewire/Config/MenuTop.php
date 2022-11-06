@@ -15,7 +15,7 @@ class MenuTop extends Component
     public function mount()
     {
         $this->config = Config::getConfig('menu_top');
-        $this->position_menu = MenuPosition::getOptions();
+        $this->position_menu = Config::getOptions(new MenuPosition());
         if (!empty($this->config->data['menu_top'])) {
             $this->menu_top = $this->config->data['menu_top'];
         }

@@ -37,12 +37,12 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <button type="button" class="w-100 btn btn-sm btn-primary block"
+                                        <button type="button" class="w-100 btn btn-primary block"
                                             data-bs-toggle="modal" data-bs-target="#block_config_logo">
                                             {{ __('Logo') }}
                                         </button>
-                                        <div class="modal fade text-left" id="block_config_logo" tabindex="-1" role="dialog"
-                                            aria-labelledby="myModalLabel1" aria-hidden="true">
+                                        <div class="modal fade text-left" id="block_config_logo" tabindex="-1"
+                                            role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-scrollable" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -66,7 +66,7 @@
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="card-body">
-                                            <button type="button" class="w-100 btn btn-sm btn-primary block"
+                                            <button type="button" class="w-100 btn btn-primary block"
                                                 data-bs-toggle="modal" data-bs-target="#block_menu">
                                                 {{ __('Menu') }}
                                             </button>
@@ -99,6 +99,44 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <button type="button" class="w-100 btn btn-primary block"
+                                                data-bs-toggle="modal" data-bs-target="#block_product_cover">
+                                                {{ __('Product Cover') }}
+                                            </button>
+                                            <div class="modal fade text-left" id="block_product_cover" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel1" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="myModalLabel1">
+                                                                {{ __('Block Product Cover') }}</h5>
+                                                            <button type="button" class="close rounded-pill"
+                                                                data-bs-dismiss="modal" aria-label="Close">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @livewire('config.product-cover')
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn" data-bs-dismiss="modal">
+                                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                                <span class="d-none d-sm-block">Close</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,7 +144,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-content">
-                    <button class="btn btn-sm btn-primary" id="refreshButton"><i class="bi bi-arrow-repeat"></i>
+                    <button class="btn btn-primary" id="refreshButton"><i class="bi bi-arrow-repeat"></i>
                         {{ __('refresh') }}</button>
                     <div class="card-body">
                         <h6 class="card-subtitle">{{ __('Preview Website') }}</h6>
