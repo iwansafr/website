@@ -17,9 +17,9 @@ class ProductCover extends Component
         if(!empty($config->data['product_category_id'])){
             $this->category_id = $config->data['product_category_id'];
         }
-        $this->product_cover = Product::with(['categories'=>function($query){
+        $this->product_cover = Product::withWhereHas('categories',function($query){
             $query->where('product_category_id', $this->category_id);
-        }])->get();
+        })->first();
 
     }
     public function render()
