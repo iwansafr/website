@@ -1,3 +1,5 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
+    <form wire:submit.prevent="save">
+        <x-select name="menu_top" label="Pilih Menu" :options="$position_menu"></x-select>
+    </form>
 </div>
