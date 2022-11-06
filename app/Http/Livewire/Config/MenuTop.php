@@ -25,4 +25,17 @@ class MenuTop extends Component
     {
         return view('livewire.config.menu-top');
     }
+    public function save()
+    {
+        try {
+
+            $this->config->data = ['menu_top' => $this->menu_top];
+            $this->config->save();
+            session()->flash('message', 'Menu Top Saved');
+            session()->flash('alert', 'success');
+        } catch (\Throwable $th) {
+            session()->flash('message', $th);
+            session()->flash('alert', 'danger');
+        }
+    }
 }
