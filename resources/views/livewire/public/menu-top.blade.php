@@ -1,20 +1,23 @@
 <div>
     <ul class="sf-menu" id="fh5co-primary-menu">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li>
-            <a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-            <ul class="fh5co-sub-menu">
-                <li><a href="#">Family</a></li>
-                <li><a href="#">CSS3 &amp; HTML5</a></li>
-                <li><a href="#">Angular JS</a></li>
-                <li><a href="#">Node JS</a></li>
-                <li><a href="#">Django &amp; Python</a></li>
-            </ul>
-        </li>
-        <li><a href="flight.html">Flights</a></li>
-        <li><a href="hotel.html">Hotel</a></li>
-        <li><a href="car.html">Car</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        @if ($menu_top->isNotEmpty())
+            @foreach ($menu_top as $item)
+                @if (empty($item->parent))
+                    <li class="@if(url($item->link) == url()->current()) active @endif">
+                        @php
+                            $sub_menu = $menu_top->where('parent',$item->id);
+                        @endphp
+                        <a href="{{ url($item->link) }}" class="fh5co-sub-ddown">{{ $item->title }}</a>
+                        @if ($sub_menu->isNotEmpty())
+                            <ul class="fh5co-sub-menu">
+                                @foreach ($sub_menu as $sub_menu_item)
+                                    <li><a href="{{ url($sub_menu_item->link) }}">{{ $sub_menu_item->title }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endif
+            @endforeach
+        @endif
     </ul>
 </div>

@@ -767,7 +767,6 @@
 	
 	<!-- Main JS -->
 	<script src="/travel/js/main.js"></script>
-
 	</body>
 </html>
 

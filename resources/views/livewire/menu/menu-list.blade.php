@@ -12,6 +12,7 @@
                                 <tr>
                                     <th>{{ __('NO') }}</th>
                                     <th>{{ __('TITLE') }}</th>
+                                    <th>{{ __('PARENT') }}</th>
                                     <th>{{ __('POSITION') }}</th>
                                     <th>{{ __('ORDER') }}</th>
                                     <th>{{ __('ACTION') }}</th>
@@ -23,6 +24,7 @@
                                         <tr>
                                             <td>{{ $loop->index + $dataMenu->firstItem() }}</td>
                                             <td>{{ $item->title }}</td>
+                                            <td>{{ $item->menu_parent->title ?? '-' }}</td>
                                             <td>{{ $item->menu_position->title }}</td>
                                             <td>{{ $item->order }}</td>
                                             <td>
