@@ -54,7 +54,7 @@ class MenuEdit extends Component
                 session()->flash('alert','success');
                 session()->flash('msg',__('Menu Berhasil disimpan'));
                 if (empty($this->menuId)) {
-                    $this->reset();
+                    $this->reset(['title','menu_position_id','parent','link','order']);
                 }
                 $this->emit('refreshDataList');
             }
@@ -65,7 +65,7 @@ class MenuEdit extends Component
     }
     public function clear()
     {
-        $this->reset();
+        $this->reset(['title','menu_position_id','parent','link','order']);
         $this->menuId  = 0;
     }
     public function initSetEditData($data)

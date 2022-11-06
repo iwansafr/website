@@ -39,6 +39,7 @@
                                         <li class="breadcrumb-item active" aria-current="page">
                                             @yield('title')
                                         </li>
+                                        @yield('sub_title')
                                     </ol>
                                 </nav>
                             </div>

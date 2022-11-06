@@ -24,6 +24,18 @@
 
     <li class="sidebar-item  has-sub">
         <a href="#" class='sidebar-link'>
+            <i class="bi bi-columns"></i>
+            <span>{{ __('Appearance') }}</span>
+        </a>
+        <ul class="submenu ">
+            <li class="submenu-item ">
+                <a href="{{ url('admin/block/position') }}"> <i class="bi bi-columns"></i> {{ __('Block Position') }}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="sidebar-item  has-sub">
+        <a href="#" class='sidebar-link'>
             <i class="bi bi-stack"></i>
             <span>{{ __('Menu') }}</span>
         </a>

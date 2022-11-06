@@ -33,6 +33,7 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
         return view('dashboard.content.edit',['content_id'=>$id]);
     });
     Route::view('/content/edit','dashboard.content.edit');
+    Route::view('/block/position','dashboard.block.position');
 
 });
 
