@@ -47,9 +47,10 @@ class MenuEdit extends Component
     
             $menu->title            = $this->title;
             $menu->menu_position_id = $this->menu_position_id;
-            $menu->parent           = $this->parent;
+            $menu->parent           = empty($this->parent) ? NULL : $this->parent;
             $menu->link             = $this->link;
-            $menu->order             = $this->order;
+            $menu->order            = $this->order;
+            
             if($menu->save()){
                 session()->flash('alert','success');
                 session()->flash('msg',__('Menu Berhasil disimpan'));
