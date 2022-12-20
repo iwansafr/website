@@ -26,8 +26,21 @@
                                                 {{ $item->parentCategory->title ?? 'None' }}
                                             </td>
                                             <td>
-                                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editModal" wire:click="setEdit({{ $item->id }})"><i class="bi bi-pencil"></i></button>
-                                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" wire:click="setDelete({{ $item->id }})"><i class="bi bi-trash"></i></button>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary btn-sm dropdown-toggle me-1" type="button"
+                                                        id="dropdownMenuButtonAction{{ $item->id }}" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        {{ __('Action') }}
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonAction{{ $item->id }}">
+                                                        <a class="dropdown-item bg-info text-white" href="{{ url('admin/product/category/'.$item->id.'/list') }}">
+                                                            <span class="dropdown-item-emoji"><i class="bi bi-eye"></i></span>
+                                                            {{ __('See Product') }}
+                                                        </a>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editModal" wire:click="setEdit({{ $item->id }})"><i class="bi bi-pencil"></i></button>
+                                                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" wire:click="setDelete({{ $item->id }})"><i class="bi bi-trash"></i></button>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

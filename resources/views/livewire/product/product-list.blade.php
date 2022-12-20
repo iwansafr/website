@@ -12,6 +12,9 @@
                                 <tr>
                                     <th>{{ __('NO') }}</th>
                                     <th>{{ __('TITLE') }}</th>
+                                    @if (!empty($cat_id))
+                                        <th>{{ __('CATEGORY') }}</th>
+                                    @endif
                                     <th>{{ __('ACTION') }}</th>
                                 </tr>
                             </thead>
@@ -21,6 +24,11 @@
                                         <tr>
                                             <td>{{ $loop->index + $dataProduct->firstItem() }}</td>
                                             <td>{{ $item->title }}</td>
+                                            @if (!empty($cat_id))
+                                                <td>
+                                                    {{ $item->category }}
+                                                </td>
+                                            @endif
                                             <td>
                                                 <a href="{{ url('admin/product/edit/'.$item->id) }}" class="btn btn-sm btn-info"><i class="bi bi-pencil"></i></a>
                                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" wire:click="setDelete({{ $item->id }})"><i class="bi bi-trash"></i></button>

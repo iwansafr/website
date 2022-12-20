@@ -36,6 +36,9 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     
 
     Route::view('/product/category','dashboard.product.category');
+    Route::get('/product/category/{id}/list',function($id){
+        return view('dashboard.product.list',['cat_id'=>$id]);
+    });
     Route::view('/product/list','dashboard.product.list');
     Route::get('/product/edit/{id}',function($id){
         return view('dashboard.product.edit',['product_id'=>$id]);
